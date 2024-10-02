@@ -2,8 +2,8 @@
 
 #### 1. 학생테이블에서 학생 이름과 학생번호 조회
 ```
-  SELECT studno, name FROM student;
- +--------+-----------+
+ SELECT studno, name FROM student;
++--------+-----------+
 | studno | name      |
 +--------+-----------+
 |  10101 | 전인하    |
@@ -60,11 +60,11 @@ mysql> SELECT  deptno `부서`, dname `부서명`, loc `위치` FROM Department;
 ```
 ---
 #### 4. 학생 테이블에서 학생이름과 각 항생에 대한 표준 체중 조회 
--  깔끔하게 이름 정하고싶으면  SELECT  name, weight, (height-110)*0.9뒤에 `` 사용해서 별칭입력  FROM student;
+- 깔끔하게 이름 정하고싶으면 SELECT  name, weight, (height-110)*0.9뒤에 `` 사용해서 별칭입력  FROM student;
 
 
 ```
- SELECT  name, weight, (height-110)*0.9 FROM student;
+
 mysql> SELECT  name, weight, (height-110)*0.9 FROM student;
 +-----------+--------+------------------+
 | name      | weight | (height-110)*0.9 |
@@ -92,7 +92,7 @@ mysql> SELECT  name, weight, (height-110)*0.9 FROM student;
 #### 5.학생테이블에서 학과 번호가 101번인 학생들의 학번 이름 학년 출력
 
 ```
- SELECT studno, name, grade  FROM student WHERE deptno = 101;  mysql> SELECT studno, name, grade  FROM student WHERE deptno = 101;
+mysql> SELECT studno, name, grade  FROM student WHERE deptno = 101;
 +--------+-----------+-------+
 | studno | name      | grade |
 +--------+-----------+-------+
@@ -110,7 +110,7 @@ mysql> SELECT  name, weight, (height-110)*0.9 FROM student;
 --- 
 #### 6.교수 테이블에서 학과번호가 101번인 교수들의 교수번호, 이름, 급여 출력
 ```
- SELECT profno, name, sal From professor WHERE deptno = 101;  mysql> SELECT profno, name, sal From professor WHERE deptno = 101;
+mysql> SELECT profno, name, sal From professor WHERE deptno = 101;
 +--------+-----------+-----+
 | profno | name      | sal |
 +--------+-----------+-----+
@@ -125,7 +125,7 @@ mysql> SELECT  name, weight, (height-110)*0.9 FROM student;
 #### 7. 학생테이블에서 키가 170 이상인 학생의 학번 이름 학년 학과 번호 키 출력
 
 ```
-  SELECT studno, name, grade, deptno, height FROM student WHERE height >= 170;  mysql> SELECT studno, name, grade, deptno, height FROM student WHERE height >= 170;
+mysql> SELECT studno, name, grade, deptno, height FROM student WHERE height >= 170;
 +--------+-----------+-------+--------+--------+
 | studno | name      | grade | deptno | height |
 +--------+-----------+-------+--------+--------+
@@ -143,9 +143,9 @@ mysql> SELECT  name, weight, (height-110)*0.9 FROM student;
 
 ```
 ---
-#### 8 . 학생테이블에서 1학년이거나 몸무게가 70kg 이상인 학생만 검색하여 이름 학번 학년 몸무게 학과번호 출력
+#### 8 . 학생테이블에서 1학년이거나 몸무게가 70kg 이상인 학생만 검색하여이름 학번 학년 몸무게 학과번호 출력
 ```
- SELECT name, studno, grade, weight, deptno  FROM student WHERE grade = 1 or weight>=70;  mysql> SELECT name, studno, grade, weight, deptno  FROM student WHERE grade = 1 or weight>=70;
+ SELECT name, studno, grade, weight, deptno  FROM student WHERE grade = 1 or weight>=70;
 +-----------+--------+-------+--------+--------+
 | name      | studno | grade | weight | deptno |
 +-----------+--------+-------+--------+--------+
