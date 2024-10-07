@@ -41,13 +41,13 @@ mysql> SELECT name, deptno, weight FROM student s
 3. 이광훈 학생 과 같은 학과의 학생들에 대한 평균 몸무게보다 몸무게가 적게 나가는 학생들의 이름, 몸무게, 소속학과이름, 담당교수 이름을 조회
 - 담당교수가 없는 학생은 출력되지 않습니다
 
-SELECT s.name, s.weight, d.dname, p.name 
-FROM student s
-INNER JOIN department d ON s.deptno = d.deptno
-INNER JOIN professor p ON s.profno = p.profno
-WHERE s.weight < (SELECT AVG(weight) FROM student 
-WHERE deptno = (SELECT deptno FROM student WHERE name = '이광훈')
-);
+SELECT s.name, s.weight, d.dname, p.name
+    -> FROM student s
+    -> INNER JOIN department d ON s.deptno = d.deptno
+    -> INNER JOIN professor p ON s.profno = p.profno
+    -> WHERE s.weight < (SELECT AVG(weight) FROM student
+    -> deptno = (SELECT deptno FROM student WHERE name = '이광훈')
+    -> );
 
 ```
 mysql> SELECT s.name, s.weight, d.dname, p.name
@@ -55,7 +55,7 @@ mysql> SELECT s.name, s.weight, d.dname, p.name
     -> INNER JOIN department d ON s.deptno = d.deptno
     -> INNER JOIN professor p ON s.profno = p.profno
     -> WHERE s.weight < (SELECT AVG(weight) FROM student
-    -> WHERE deptno = (SELECT deptno FROM student WHERE name = '이광훈')
+    -> deptno = (SELECT deptno FROM student WHERE name = '이광훈')
     -> );
 +-----------+--------+-----------------------+-----------+
 | name      | weight | dname                 | name      |
@@ -90,13 +90,13 @@ mysql> SELECT name, grade, height FROM student s WHERE s.grade = (SELECT grade F
 SELECT s.studno, d.dname, s.grade, s.name 
 FROM student s 
 INNER JOIN department d ON s.deptno = d.deptno
-WHERE d.dname LIKE '%공학%';
+WHERE s.deptno IN ( SELECT depton FROM department WHERE dname LIKE '%공학%');
 
 ```
 mysql> SELECT s.studno, d.dname, s.grade, s.name
     -> FROM student s
     -> INNER JOIN department d ON s.deptno = d.deptno
-    -> WHERE d.dname LIKE '%공학%';
+    -> WHERE s.deptno IN (SELECT deptno FROM department WHERE dname LIKE '%공학%');
 +--------+--------------------+-------+-----------+
 | studno | dname              | grade | name      |
 +--------+--------------------+-------+-----------+
@@ -113,4 +113,5 @@ mysql> SELECT s.studno, d.dname, s.grade, s.name
 |  20103 | 전자공학과         |     2 | 김진경    |
 |  20104 | 전자공학과         |     1 | 조명훈    |
 +--------+--------------------+-------+-----------+
+12 rows in set (0.01 sec)
 ```
